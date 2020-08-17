@@ -7,8 +7,6 @@ IMAGE_FEATURES += "splash  allow-empty-password allow-root-login bash-completion
 IMAGE_INSTALL_append +=  "boinc-client \
                         nano"
 
-#PREFERRED_PROVIDER_virtual/kernel = "linux-yocto-custom"
-
 LICENSE = "MIT"
 
 inherit core-image
