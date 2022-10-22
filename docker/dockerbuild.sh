@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build . -t dockeryp:20.05
+docker build . -t dockeryp:22.10.2
 docker image prune -f

@@ -2,10 +2,11 @@
 
 SUMMARY = "Frank's first try of image"
 
-IMAGE_FEATURES += "splash  allow-empty-password allow-root-login bash-completion-pkgs ssh-server-openssh"
+IMAGE_FEATURES += "splash  allow-empty-password \
+                    allow-root-login bash-completion-pkgs \
+                    ssh-server-openssh"
 
-IMAGE_INSTALL_append +=  "boinc-client \
-                        nano"
+IMAGE_INSTALL_append +=  "nano "
 
 LICENSE = "MIT"
 
