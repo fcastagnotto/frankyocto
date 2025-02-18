@@ -7,6 +7,7 @@ IMAGE_FEATURES += "splash  allow-empty-password \
                     ssh-server-openssh"
 
 IMAGE_INSTALL_append +=  "nano "
+IMAGE_INSTALL_remove += " packagegroup-base-extended"
 
 LICENSE = "MIT"
 
