@@ -10,11 +10,12 @@ This repository use various other public repository as sources. <br>
 For that, the required repos are configured as submodules. <br>
 To correctly clone the repo and all the other sources, use the following command:
 ```shell
-$ git clone --recursive git@github.com:fcastagnotto/frankyocto.git
+git clone --recursive git@github.com:fcastagnotto/frankyocto.git
 ```
 and in case of download errors of submodules, use the command:
 ```shell
-$ git submodule update --init --recursive
+cd frankyocto
+git submodule update --init --recursive
 ```
 
 ## Setup
@@ -23,14 +24,15 @@ $ git submodule update --init --recursive
 The "*docker*" folder contains the **dockerbuild.sh** script that automatically create the docker image with all the components required to setup the build environment, based on the **Dockerfile** configuration file. <br>
 Simply launch:
 ```shell
-$ ./dockerbuild.sh
+cd docker
+./dockerbuild.sh
 ```
 
 ### environment start
 The "*docker*" folder contains the **dockerrun.sh** script that start the container from the previously created image. <br>
 Simply launch:
 ```shell
-$ ./dockerrun.sh
+./dockerrun.sh
 ```
 
 
