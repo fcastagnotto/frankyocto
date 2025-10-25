@@ -1,9 +1,6 @@
 #!/bin/bash
 
-echo "setup yocto.."
-ln -s /yocto/sources/meta-frank/oe-init-build-frank /yocto/sources/poky/
-cd /yocto/sources/poky/
-source oe-init-build-frank ../../build
+TEMPLATECONF=/yocto/sources/meta-frank/conf/templates/conf1 source sources/poky/oe-init-build-env build
 
 echo "starting build.."
 
