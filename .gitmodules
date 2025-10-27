@@ -22,3 +22,7 @@
 	path = sources/meta-qbee
 	url = https://github.com/qbee-io/meta-qbee.git
 	branch = master
+# [submodule "sources/meta-lts-mixins"]
+# 	path = sources/meta-lts-mixins
+# 	url = https://git.yoctoproject.org/meta-lts-mixins
+# 	branch = scarthgap/u-boot
