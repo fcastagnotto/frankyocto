@@ -10,3 +10,15 @@
         path = sources/poky
         url = https://git.yoctoproject.org/git/poky
 	branch = scarthgap
+[submodule "sources/meta-rauc"]
+	path = sources/meta-rauc
+	url = https://github.com/rauc/meta-rauc.git
+	branch = scarthgap
+[submodule "sources/meta-rauc-community"]
+	path = sources/meta-rauc-community
+	url = https://github.com/rauc/meta-rauc-community.git
+	branch = scarthgap
+[submodule "sources/meta-qbee"]
+	path = sources/meta-qbee
+	url = https://github.com/qbee-io/meta-qbee.git
+	branch = master
