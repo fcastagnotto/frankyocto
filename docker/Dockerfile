@@ -36,7 +36,8 @@ USER ubuntu
 #WORKDIR ${YOCTO_INSTALL_PATH}
 #ENV YOCTO_RELEASE "rocko"
 RUN sed -i 's/#force_color_prompt/force_color_prompt/g' ~/.bashrc
-RUN echo "alias build='./build.sh'" >> ~/.bashrc
+RUN echo "alias build='cd /yocto/ && ./build.sh'" >> ~/.bashrc
+RUN echo "alias b='cd /yocto/ && ./build.sh'" >> ~/.bashrc
 
 
 WORKDIR /yocto
