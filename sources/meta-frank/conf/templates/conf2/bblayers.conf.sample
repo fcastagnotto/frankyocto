@@ -9,12 +9,11 @@ BBLAYERS ?= " \
   ##OEROOT##/meta \
   ##OEROOT##/meta-poky \
   ##OEROOT##/meta-yocto-bsp \
-  ##OEROOT##/../meta-frank \
-  ##OEROOT##/../meta-openembedded/meta-oe \
-  ##OEROOT##/../meta-raspberrypi \
   ##OEROOT##/../meta-rauc \
-  ##OEROOT##/../meta-qbee/meta-qbee \
+  ##OEROOT##/../meta-raspberrypi \
+  ##OEROOT##/../meta-openembedded/meta-oe \
+  ##OEROOT##/../meta-frank \
   ##OEROOT##/../meta-lts-mixins \
   ##OEROOT##/../meta-rauc-community/meta-rauc-raspberrypi \
-  ##OEROOT##/../meta-openembedded/meta-python \
+  ##OEROOT##/../meta-qbee/meta-qbee \
   "

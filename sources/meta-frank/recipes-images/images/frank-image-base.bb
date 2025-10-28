@@ -9,8 +9,9 @@ IMAGE_FEATURES += "splash  allow-empty-password \
                     allow-root-login bash-completion-pkgs \
                     ssh-server-openssh"
 
-IMAGE_INSTALL:append =  " nano python3-speedtest-cli"
+IMAGE_INSTALL:append =  " nano"
+# IMAGE_INSTALL:append =  " python3-speedtest-cli"
 IMAGE_INSTALL:remove = "packagegroup-base-extended"
 
-IMAGE_BOOT_FILES:append = " boot.scr"
-IMAGE_INSTALL:append = " rauc-grow-data-part"
+# IMAGE_BOOT_FILES:append = " boot.scr"
+# IMAGE_INSTALL:append = " rauc-grow-data-part"
