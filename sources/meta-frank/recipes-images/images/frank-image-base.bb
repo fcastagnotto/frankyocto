@@ -10,8 +10,10 @@ IMAGE_FEATURES += "splash  allow-empty-password \
                     ssh-server-openssh"
 
 IMAGE_INSTALL:append =  " nano"
+IMAGE_INSTALL:append = " rauc"
 # IMAGE_INSTALL:append =  " python3-speedtest-cli"
 IMAGE_INSTALL:remove = "packagegroup-base-extended"
+IMAGE_FSTYPES="tar.bz2 ext4 wic.bz2 wic.bmap"
 
 # IMAGE_BOOT_FILES:append = " boot.scr"
 # IMAGE_INSTALL:append = " rauc-grow-data-part"
