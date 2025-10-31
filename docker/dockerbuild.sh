@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# v1.0
 
-docker build . -t dockeryp:22.10.2
+cd "$(dirname "$0")" || exit 1
+
+docker build . -t dockeryp:24.04
 docker image prune -f

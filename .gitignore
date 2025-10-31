@@ -1,2 +1,4 @@
 build/
-
+sources/meta-frank/recipes-images/rauc/files/frank.cert.pem
+sources/meta-frank/recipes-images/rauc/files/frank.key.pem
+sources/meta-frank/conf/qbee-key.inc
