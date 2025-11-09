@@ -1,6 +1,7 @@
 FROM ubuntu:24.04 AS ubu2404                                                            
 LABEL maintainer="Francesco Castagnotto <fcastagnotto@linux.com>"
 
+RUN printf 'nameserver 1.1.1.1\nnameserver 8.8.8.8\n' > /etc/resolv.conf
 # Upgrade system and Yocto Proyect basic dependencies
 RUN apt-get update && apt-get -y upgrade && apt-get -y install gawk wget git-core diffstat unzip texinfo\
  gcc-multilib build-essential chrpath socat cpio python-is-python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm curl \
