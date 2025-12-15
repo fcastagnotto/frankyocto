@@ -17,4 +17,5 @@ IMAGE_INSTALL:remove = "packagegroup-base-extended \
 IMAGE_INSTALL:append =  " nano dhcpcd openvpn \
                          rauc python3-speedtest-cli \
                          static-eth0 \
-                         boinc-client openssh"
+                         boinc-client openssh \
+                         python3 python3-pip"
