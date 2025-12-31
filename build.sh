@@ -2,7 +2,7 @@
 
 #---------------------------------------------------------------------------------
 # Description:      Build for Frank images
-# Version:          1.5
+# Version:          1.6
 # Date:             2025-12-31
 # Author:           Francesco Castagnotto <fcastagnotto@linux.com>
 #---------------------------------------------------------------------------------
@@ -53,6 +53,8 @@ SD_LAYOUT = "sd${SDCARD_SIZE}"
 require \${TOPDIR}/../sources/meta-frank/conf/sdlayout/\${SD_LAYOUT}.conf
 EOF
 
+else
+    rm conf/auto.conf
 fi
 
 
@@ -83,3 +85,9 @@ echo "starting build.."
 echo "MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}"
 MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}
 MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${BUNDLE}
+
+echo ""
+echo "Build done of MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}"
+if [ "$MACHINE" = "raspberrypi3-64"  ];then
+    echo "SDcard size is ${SDCARD_SIZE}"
+fi

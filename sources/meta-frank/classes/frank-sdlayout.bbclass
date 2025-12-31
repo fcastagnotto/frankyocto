@@ -9,6 +9,7 @@ IMAGE_ROOTFS_SIZE:aarch64:sd32g = "11534336"
 
 
 # WKS
+WKS_FILE:arm = "sdimage-dual-raspberrypi.wks.in"
 WKS_FILE:aarch64:sd8g  = "frank-sdcard-rauc-8g.wks"
 WKS_FILE:aarch64:sd16g = "frank-sdcard-rauc-16g.wks"
 WKS_FILE:aarch64:sd32g = "frank-sdcard-rauc-32g.wks"
