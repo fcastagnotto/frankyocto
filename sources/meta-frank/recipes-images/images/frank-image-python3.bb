@@ -1,6 +1,7 @@
 LICENSE = "MIT"
 
 require recipes-core/images/core-image-base.bb
+inherit frank-sdlayout
 ### Franke image base + python libs
 
 SUMMARY = "Frank image with lot of python libs"

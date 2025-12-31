@@ -1,6 +1,7 @@
 LICENSE = "MIT"
 
 require recipes-core/images/core-image-base.bb
+inherit frank-sdlayout
 ### Franke image base
 
 SUMMARY = "Frank first try of image"

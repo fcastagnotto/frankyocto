@@ -2,12 +2,12 @@
 
 #---------------------------------------------------------------------------------
 # Description:      Build for Frank images
-# Version:          1.3
-# Date:             2025-12-27
+# Version:          1.5
+# Date:             2025-12-31
 # Author:           Francesco Castagnotto <fcastagnotto@linux.com>
 #---------------------------------------------------------------------------------
 
-TEMPLATECONF=/yocto/sources/meta-frank/conf/templates/conf2 source sources/poky/oe-init-build-env build
+TEMPLATECONF=/yocto/sources/meta-frank/conf/templates/conf3 source sources/poky/oe-init-build-env build
 
 MACHINE=""
 IMAGE=""
@@ -42,19 +42,17 @@ if [ "$MACHINE" = "raspberrypi3-64"  ];then
     echo
 
     case "$choice" in
-        1)
-            SDCARD_SIZE="8g"
-            ;;
-        2)
-            SDCARD_SIZE="16g"
-            ;;
-        3)
-            SDCARD_SIZE="32g"
-            ;;
-        *)
-            SDCARD_SIZE="8g"
-            ;;
+        1)  SDCARD_SIZE="8g" ;;
+        2)  SDCARD_SIZE="16g" ;;
+        3)  SDCARD_SIZE="32g" ;;
+        *)  SDCARD_SIZE="8g"  ;;
     esac
+
+    cat > conf/auto.conf <<EOF
+SD_LAYOUT = "sd${SDCARD_SIZE}"
+require \${TOPDIR}/../sources/meta-frank/conf/sdlayout/\${SD_LAYOUT}.conf
+EOF
+
 fi
 
 
@@ -82,12 +80,6 @@ esac
 
 echo "starting build.."
 
-if [ "$MACHINE" = "raspberrypi3-64"  ];then
-    echo "SDCARD_SIZE=${SDCARD_SIZE} MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}"
-    SDCARD_SIZE=${SDCARD_SIZE} MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}
-    SDCARD_SIZE=${SDCARD_SIZE} MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${BUNDLE}
-else
-    echo "MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}"
-    MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}
-    MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${BUNDLE}
-fi
+echo "MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}"
+MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}
+MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${BUNDLE}
