@@ -1,6 +1,7 @@
 LICENSE = "MIT"
 
 require recipes-core/images/core-image-base.bb
+inherit frank-sdlayout
 ### Franke image base
 
 SUMMARY = "Frank first try of image"
@@ -16,5 +17,9 @@ IMAGE_INSTALL:remove = "packagegroup-base-extended \
 
 IMAGE_INSTALL:append =  " nano dhcpcd openvpn \
                          rauc python3-speedtest-cli \
+                         e2fsprogs \
+                         e2fsprogs-tune2fs e2fsprogs-resize2fs \
                          static-eth0 \
-                         boinc-client openssh"
+                         boinc-client openssh \
+                         python3 python3-pip \
+                         "

@@ -7,8 +7,9 @@ RUN apt-get update && apt-get -y upgrade && apt-get -y install gawk wget git-cor
   file lz4 zstd
 
  # Set up locales
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y install locales apt-utils sudo && dpkg-reconfigure locales && locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-ENV LANG=en_US.utf8
+ENV LANG=it_IT.utf8
 
 # Clean up APT when done.
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -26,7 +27,7 @@ FROM ubu2404 AS repo
 # Install repo
 #RUN curl -o /usr/local/bin/repo https://storage.googleapis.com/git-repo-downloads/repo && chmod a+x /usr/local/bin/repo
 RUN apt-get update -y && apt-get install nano vim -y
-RUN apt-get install bash-completion
+RUN apt-get install -y bash-completion
 
 FROM repo AS finish
 # Run as build user from the installation path
@@ -35,9 +36,9 @@ FROM repo AS finish
 USER ubuntu
 #WORKDIR ${YOCTO_INSTALL_PATH}
 #ENV YOCTO_RELEASE "rocko"
+
 RUN sed -i 's/#force_color_prompt/force_color_prompt/g' ~/.bashrc
 RUN echo "alias build='cd /yocto/ && ./build.sh'" >> ~/.bashrc
 RUN echo "alias b='cd /yocto/ && ./build.sh'" >> ~/.bashrc
-
 
 WORKDIR /yocto

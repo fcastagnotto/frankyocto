@@ -1,36 +1,36 @@
 # Frank Yocto
 
-Build of Yocto with creation of a new meta-layer with all the configurations and parts wanted for a well-done yocto system.
+Yocto build that includes a custom meta-layer with all the configurations and components needed for a complete, well-structured embedded Linux system.
 
 F.Castagnotto [mailto:fcastagnotto@linux.com]
 
 ## Clone
 
-This repository use various other public repository as sources. <br>
-For that, the required repos are configured as submodules. <br>
-To correctly clone the repo and all the other sources, use the following command:
+This repository uses several public repositories as sources. <br>
+Therefore, the required repositories are configured as Git submodules. <br>
+To correctly clone the repository and all the other sources, use the following command:
 ```shell
 git clone --recursive git@github.com:fcastagnotto/frankyocto.git
 ```
-and in case of download errors of submodules, use the command:
+If submodule download errors occur, use the following command:
 ```shell
 cd frankyocto
-git submodule update --init --recursive
+git submodule update --init --remote --recursive
 ```
 
 ## Setup
 
-### environment setup
-The "*docker*" folder contains the **dockerbuild.sh** script that automatically create the docker image with all the components required to setup the build environment, based on the **Dockerfile** configuration file. <br>
-Simply launch:
+### Environment Setup
+The *docker* folder contains the **dockerbuild.sh** script, which automatically creates the Docker image with all the components required to set up the build environment, based on the **Dockerfile**. <br>
+Simply run:
 ```shell
 cd docker
 ./dockerbuild.sh
 ```
 
-### environment start
-The "*docker*" folder contains the **dockerrun.sh** script that start the container from the previously created image. <br>
-Simply launch:
+### Environment Start
+The "*docker*" folder contains the **dockerrun.sh** script, which starts the container from the previously created image. <br>
+Simply run:
 ```shell
 ./dockerrun.sh
 ```
@@ -38,40 +38,53 @@ Simply launch:
 
 ## Build
 
-To launch the yocto build:
-1. launch the container
-2. setup the yocto build environment
-```shell
-$ ln -s /yocto/sources/meta-frank/oe-init-build-frank /yocto/sources/poky/
-$ cd /yocto/sources/poky/
-$ source oe-init-build-frank ../../build
-```
-3. start the yocto build with the command:
-```shell
-$ bitbake frank-image-base
-```
-<!--$ bitbake linux-yocto-custom, why not? -->
+To start the Yocto build, simply run the **build.sh** script. It will:
+1. Set up the environment using the templates provided in meta-frank
+2. Launch the creation of the image of **frank-image-base**
+3. Create the RAUC update bundle 
 
 ### Image frank-image-base
-At the project starts, that base image simply contains:
-- few starting tools to login and starts
+The base image includes:
+- a few basic tools for login and startup
 - **Nano** editor
-- **Boinc client**, to share the computation resources of the RPI for volunteer computing and grid computing
+- **BOINC client**, to share the Raspberry Pi’s computing resources for volunteer and grid computing
+- **RAUC** client
+- **RAUC configuration** including the partition map required for A/B update
+- **OpenSSH** with public key configuration
+- **Static IP configuration**
+- **/tmp** mounted as tmpfs
 
 ### Burn SD Image
-At the end of build, an image file can be found into the folder **build/tmp/deploy/images/raspberrypi/** with name **frank-image-base-raspberrypi.rpi-sdimg**. <br>
-To write the image on an SD card can be done with the DD command:
+
+The final SD-card image can be found at
+**build/tmp-glibc/deploy/images/raspberrypi**.
+
+The name of the file will be **frank-image-base-raspberrypi.rootfs.wic.bz2**
+and can be written to an SD card using the dd command:
 ```shell
-$ dd if=frank-image-base-raspberrypi.rpi-sdimg of=/dev/sda bs=10M status=progress && sync
+$ bunzip2 -c frank-image-base-raspberrypi.rootfs.wic.bz2 | sudo dd of=/dev/sdX bs=4M conv=fsync status=progress
+$ sync
 ```
 
-------------------------------------------------------------------------------------------
+### Bundle Image for RAUC
 
-[2020.08.17] First understood of purpose of project (xD), Readme creation and recap of older
-build attempts
-
-
+The second build step creates the bundle to be used for updates via RAUC. <br>
+The file will be named **frank-image-bundle-raspberrypi.raucb** and can be easily loaded on a QBEE profile to launch the update, or alternatively copied to the Raspberry Pi’s storage and then used for system updates via RAUC.
 
 ## References
-[Boinc project](https://boinc.berkeley.edu)<br>
-[World Community Grid projects](https://www.worldcommunitygrid.org/research/viewAllProjects.do)
+[Yocto Project Quick Build](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html)<br>
+[RAUC - Safe and secure OTA updates for Embedded Linux](https://rauc.io/)<br>
+[BOINC project](https://boinc.berkeley.edu)<br>
+[World Community Grid Projects](https://www.worldcommunitygrid.org/research/viewAllProjects.do)
+
+<br>
+
+---
+
+- **2025.10.31** RAUC working with QBEE and RAUC certificates  
+- **2025.10.30** Built with RAUC, running on Raspberry Pi 
+- **2025.10.27** Added RAUC layer and RAUC community layer      
+- **2025.10.26** Cleaned tree, updated to Yocto Scarthgap, updated Dockerfile to Ubuntu 24.04, removed submodule sw-update  
+- **2020.08.17** First understanding of the project’s purpose 😄, creation of the base Yocto
+
+
