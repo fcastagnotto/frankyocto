@@ -2,8 +2,8 @@
 
 #---------------------------------------------------------------------------------
 # Description:      Build for Frank images
-# Version:          1.6
-# Date:             2025-12-31
+# Version:          1.7
+# Date:             2026-04-22
 # Author:           Francesco Castagnotto <fcastagnotto@linux.com>
 #---------------------------------------------------------------------------------
 
@@ -22,7 +22,8 @@ echo
 
 case "$choice" in
     1)
-        MACHINE="raspberrypi"
+        # MACHINE="raspberrypi"
+        MACHINE="raspberrypi-bb8"
         ;;
     2)
         MACHINE="raspberrypi3-64"

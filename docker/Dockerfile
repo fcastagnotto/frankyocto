@@ -4,7 +4,7 @@ LABEL maintainer="Francesco Castagnotto <fcastagnotto@linux.com>"
 # Upgrade system and Yocto Proyect basic dependencies
 RUN apt-get update && apt-get -y upgrade && apt-get -y install gawk wget git-core diffstat unzip texinfo\
  gcc-multilib build-essential chrpath socat cpio python-is-python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping libsdl1.2-dev xterm curl \
-  file lz4 zstd
+  file lz4 zstd tmux
 
  # Set up locales
 ENV DEBIAN_FRONTEND=noninteractive
