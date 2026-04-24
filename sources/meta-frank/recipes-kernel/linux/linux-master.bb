@@ -30,4 +30,3 @@ PV = "${LINUX_VERSION}+git${SRCPV}"
 # Override COMPATIBLE_MACHINE to include your machine in a copy of this recipe
 # file. Leaving it empty here ensures an early explicit build failure.
 COMPATIBLE_MACHINE = "^raspberrypi.*"
-KERNEL_DEVICETREE = "broadcom/bcm2835-rpi-b.dtb"
