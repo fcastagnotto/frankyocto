@@ -16,20 +16,20 @@ SDCARD_SIZE=8g
 
 echo "Select the MACHINE:
     1- raspberrypi
-    2- raspberrypi3-64 "
+    2- raspberrypi3-64
+    3- raspberrypi - kernel 7.0"
 read -n 1 -r choice
 echo
 
 case "$choice" in
     1)
-        # MACHINE="raspberrypi"
-        MACHINE="raspberrypi-bb8"
+        MACHINE="raspberrypi"
         ;;
     2)
         MACHINE="raspberrypi3-64"
         ;;
     *)
-        MACHINE="raspberrypi"
+        MACHINE="raspberrypi-bb8"
         ;;
 esac
 
