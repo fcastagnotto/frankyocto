@@ -1,0 +1,1 @@
+RPROVIDES:${PN} += "u-boot-env"
