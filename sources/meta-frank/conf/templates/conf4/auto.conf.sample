@@ -1,0 +1,3 @@
+# Optional build-variant selection
+SD_LAYOUT ?= "sd8g"
+require ${TOPDIR}/../sources/meta-frank/conf/sdlayout/${SD_LAYOUT}.conf

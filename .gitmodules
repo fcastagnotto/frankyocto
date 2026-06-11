@@ -26,3 +26,11 @@
 	path = sources/meta-lts-mixins
 	url = https://git.yoctoproject.org/meta-lts-mixins
 	branch = scarthgap/u-boot
+[submodule "sources/meta-ti"]
+	path = sources/meta-ti
+	url = https://git.yoctoproject.org/meta-ti
+	branch = scarthgap
+[submodule "sources/meta-arm"]
+	path = sources/meta-arm
+	url = https://git.yoctoproject.org/meta-arm
+	branch = scarthgap

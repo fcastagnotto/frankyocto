@@ -2,12 +2,12 @@
 
 #---------------------------------------------------------------------------------
 # Description:      Build for Frank images
-# Version:          1.6
-# Date:             2025-12-31
+# Version:          1.7
+# Date:             2026-06-09
 # Author:           Francesco Castagnotto <fcastagnotto@linux.com>
 #---------------------------------------------------------------------------------
 
-TEMPLATECONF=/yocto/sources/meta-frank/conf/templates/conf3 source sources/poky/oe-init-build-env build
+TEMPLATECONF=/yocto/sources/meta-frank/conf/templates/conf4 source sources/poky/oe-init-build-env build
 
 MACHINE=""
 IMAGE=""
@@ -16,7 +16,8 @@ SDCARD_SIZE=8g
 
 echo "Select the MACHINE:
     1- raspberrypi
-    2- raspberrypi3-64 "
+    2- raspberrypi3-64
+    3- pocketbeagle2 "
 read -n 1 -r choice
 echo
 
@@ -26,6 +27,9 @@ case "$choice" in
         ;;
     2)
         MACHINE="raspberrypi3-64"
+        ;;
+    3)
+        MACHINE="pocketbeagle2"
         ;;
     *)
         MACHINE="raspberrypi"
