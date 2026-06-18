@@ -90,11 +90,12 @@ git clone --recursive git@github.com:fcastagnotto/frankyocto.git
 cd frankyocto
 
 # 2. Build the Docker environment
-cd docker
+cd docker/
 ./dockerbuild.sh
 
 # 3. Start the Docker container
-./dockerrun.sh
+cd ..
+docker/dockerrun.sh
 
 # 4. Inside the container, run the build
 ./build.sh
