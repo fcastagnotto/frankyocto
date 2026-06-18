@@ -2,6 +2,7 @@ MACHINE ??= "raspberrypi"
 DISTRO ?= "milleniumfalcon"
 EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
 USER_CLASSES ?= "buildstats"
+CONNECTIVITY_CHECK_URIS = ""
 
 PATCHRESOLVE = "noop"
 
