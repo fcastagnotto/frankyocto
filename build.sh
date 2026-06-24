@@ -2,8 +2,8 @@
 
 #---------------------------------------------------------------------------------
 # Description:      Build for Frank images
-# Version:          1.7
-# Date:             2026-06-09
+# Version:          1.8
+# Date:             2026-06-24
 # Author:           Francesco Castagnotto <fcastagnotto@linux.com>
 #---------------------------------------------------------------------------------
 
@@ -83,12 +83,27 @@ case "$choice" in
         ;;
 esac
 
+echo -n "Create RAUC bundle? (Y/n) "
+read -n 1 -r choice
+echo
+
+case "$choice" in
+    N|n)
+        bundle="no"
+        ;;
+    *)
+        bundle="yes"
+        ;;
+esac
 
 echo "starting build.."
 
 echo "MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}"
 MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}
-MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${BUNDLE}
+
+if [[ "$bundle" == "yes" ]];then
+    MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${BUNDLE}
+fi
 
 echo ""
 echo "Build done of MACHINE=${MACHINE} DISTRO=milleniumfalcon bitbake ${IMAGE}"
