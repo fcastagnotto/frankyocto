@@ -1,0 +1,28 @@
+services:
+  yocto:
+    network_mode: host
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USERNAME: build
+        UID: 1000
+        GID: 1000
+    image: localhost/yocto-rocky9:latest
+    container_name: yocto-rocky9
+    working_dir: /yocto
+    userns_mode: keep-id
+    user: build
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../:/yocto:z
+    environment:
+      LANG: en_US.UTF-8
+      LC_ALL: en_US.UTF-8
+      SHELL: /bin/bash
+    command: /bin/bash
+
+volumes:
+  yocto-downloads:
+  yocto-sstate:

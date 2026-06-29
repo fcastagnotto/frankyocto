@@ -1,5 +1,3 @@
-MACHINE ??= "raspberrypi"
-DISTRO ?= "milleniumfalcon"
 EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
 USER_CLASSES ?= "buildstats"
 CONNECTIVITY_CHECK_URIS = ""
@@ -20,6 +18,6 @@ BB_DISKMON_DIRS ??= "\
     HALT,/tmp,10M,1K"
 
 PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
-CONF_VERSION = "2"
+CONF_VERSION = "4"
 
 include conf/auto.conf
