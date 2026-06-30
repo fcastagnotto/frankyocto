@@ -18,6 +18,6 @@ BB_DISKMON_DIRS ??= "\
     HALT,/tmp,10M,1K"
 
 PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
-CONF_VERSION = "4"
+CONF_VERSION = "2"
 
 include conf/auto.conf
