@@ -84,12 +84,34 @@ Before you begin, ensure you have the following installed:
 
 ### Quick Start
 
+#### via Podman
+
 ```bash
 # 1. Clone the repository with all submodules
-git clone --recursive git@github.com:fcastagnotto/frankyocto.git
+git clone --recursive https://github.com/fcastagnotto/frankyocto.git
 cd frankyocto
 
-# 2. Build the Docker environment
+# 1.b clean and align the submodules
+./clean_subm.sh
+
+# 2. Build and start Containers environment
+./podman/podmanrun.sh
+
+# 3. Inside the container, run the build
+./build.sh
+```
+
+#### via Docker
+
+```bash
+# 1. Clone the repository with all submodules
+git clone --recursive https://github.com/fcastagnotto/frankyocto.git
+cd frankyocto
+
+# 1.b clean and align the submodules
+./clean_subm.sh
+
+# 2. Build and start Containers environment
 cd docker/
 ./dockerbuild.sh
 
@@ -101,6 +123,7 @@ docker/dockerrun.sh
 ./build.sh
 ```
 
+
 ### Installation
 
 #### 1. Clone Repository
@@ -108,7 +131,7 @@ docker/dockerrun.sh
 This repository uses Git submodules for Yocto layers. Clone with submodules:
 
 ```bash
-git clone --recursive git@github.com:fcastagnotto/frankyocto.git
+git clone --recursive https://github.com/fcastagnotto/frankyocto.git
 cd frankyocto
 ```
 
@@ -116,6 +139,12 @@ If you've already cloned without `--recursive`, initialize submodules:
 
 ```bash
 git submodule update --init --remote --recursive
+```
+
+In some cases the alignment of submodules it's not well done by the git submodule command. For these cases, I created the script *clean_subm.sh*, just launch it and let the magic fix appens:
+
+```bash
+./clean_subm.sh
 ```
 
 #### 2. Docker Environment Setup
@@ -376,6 +405,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [meta-raspberrypi Layer](https://git.yoctoproject.org/meta-raspberrypi/)
 
 ### Changelog
+
+#### 2026.06.18
+- ✅ Fix submodule alignment on clean clone of repo
+- 🚫 add management of PocketBeagle2
+- 🚫 rewrite of README to be more simple
+- 🚫 add management ssh keys guide
+- 🚫 add procedure for RAUC key
+
 
 #### 2025.10.31
 - ✅ RAUC integration complete and working with QBEE

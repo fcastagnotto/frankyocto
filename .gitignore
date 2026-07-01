@@ -1,4 +1,6 @@
 build/
+downloads/
+sstate-cache/
 sources/meta-frank/recipes-images/rauc/files/frank.cert.pem
 sources/meta-frank/recipes-images/rauc/files/frank.key.pem
 sources/meta-frank/recipes-connectivity/openssh/files/authorized_keys
