@@ -84,6 +84,8 @@ Before you begin, ensure you have the following installed:
 
 ### Quick Start
 
+#### via Podman
+
 ```bash
 # 1. Clone the repository with all submodules
 git clone --recursive https://github.com/fcastagnotto/frankyocto.git
@@ -92,7 +94,24 @@ cd frankyocto
 # 1.b clean and align the submodules
 ./clean_subm.sh
 
-# 2. Build the Docker environment
+# 2. Build and start Containers environment
+./podman/podmanrun.sh
+
+# 3. Inside the container, run the build
+./build.sh
+```
+
+#### via Docker
+
+```bash
+# 1. Clone the repository with all submodules
+git clone --recursive https://github.com/fcastagnotto/frankyocto.git
+cd frankyocto
+
+# 1.b clean and align the submodules
+./clean_subm.sh
+
+# 2. Build and start Containers environment
 cd docker/
 ./dockerbuild.sh
 
@@ -103,6 +122,7 @@ docker/dockerrun.sh
 # 4. Inside the container, run the build
 ./build.sh
 ```
+
 
 ### Installation
 
